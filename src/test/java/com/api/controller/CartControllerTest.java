@@ -75,7 +75,7 @@ class CartControllerTest {
                 .param("consumeId", consumeId.toString())
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.cartId").exists()) // Adjust this to match your JSON structure
+                .andExpect(MockMvcResultMatchers.jsonPath("$.cartId").exists()) 
                 .andDo(MockMvcResultHandlers.print());
     }
     @Test
@@ -84,8 +84,7 @@ class CartControllerTest {
         int newQuantity = 3;
         Long productId = 2L;
         Long consumeId = 3L;
-        Cart updatedCart = createCart(cartId); // Replace with your expected updated cart
-
+        Cart updatedCart = createCart(cartId); 
         when(cartService.updateCartItemQuantity(cartId, newQuantity, productId, consumeId)).thenReturn(updatedCart);
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/cart/" + cartId)
